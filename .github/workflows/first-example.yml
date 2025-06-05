@@ -1,0 +1,26 @@
+name: My First Workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome Message
+        run: echo "Welcome to my first GitHub Actions workflow!"
+      - name: Display Current Date
+        run: date
+      - name: List Files
+        run: ls -la
+      - name: Read File Content
+        run: |
+          if [ -f "README.md" ]; then
+            echo "Content of README.md:"
+            cat README.md
+          else
+            echo "README.md does not exist."
+          fi
