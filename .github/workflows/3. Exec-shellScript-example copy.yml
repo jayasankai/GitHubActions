@@ -1,4 +1,4 @@
-name: Execute 3rd party library
+name: Execute shell script in the workflow
 on:
   push:
     branches:
@@ -16,12 +16,10 @@ jobs:
         run: |
           echo "Welcome to my second GitHub Actions workflow!"
           date
-      - name: Generate ASCCII Artwork using cowsay
+      - name: Execute shell script
         run: |
-          sudo apt-get update
-          sudo apt-get install -y cowsay
-          echo "Generating ASCII art using cowsay..."
-          cowsay -f dragon "Run for your life, it's a dragon!" >> dragon.txt
+          chmod +x ./ascii-script.sh
+          ./ascii-script.sh
       - name: Read file and display content
         run: |
           ls -ltra
