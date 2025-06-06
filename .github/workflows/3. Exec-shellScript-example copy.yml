@@ -1,4 +1,4 @@
-name: Execute shell script in the workflow
+name: 3. Execute shell script in the workflow
 on:
   push:
     branches:
