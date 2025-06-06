@@ -7,16 +7,23 @@ on:
     branches:
       - main
 jobs:
-    build:
+    build-core:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Code
               uses: actions/checkout@v2
-            - name: Build Project
-              run: echo "Building the project..."
+            - name: Build Core Library
+              run: echo "Building the Core Library..."
+    build-module:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
+            - name: Build Module
+              run: echo "Building the module..."
     test:
         runs-on: ubuntu-latest
-        needs: build
+        needs: [build-core, build-module]
         steps:
             - name: Checkout Code
               uses: actions/checkout@v2
@@ -40,7 +47,7 @@ jobs:
               run: echo "All jobs completed successfully!"
     cleanup:
         runs-on: ubuntu-latest
-        needs: [build, test, deploy, notify]
+        needs: [build-core, build-module, test, deploy, notify]
         steps:
             - name: Checkout Code
               uses: actions/checkout@v2
