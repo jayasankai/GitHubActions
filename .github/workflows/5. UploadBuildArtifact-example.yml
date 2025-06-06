@@ -1,0 +1,41 @@
+name: 5. Upload and Download Build Artifact to use within jobs
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
+            - name: Execute shell script
+              run: |
+                chmod +x ./ascii-script.sh
+                ./ascii-script.sh
+            - name: Upload Dragon file as Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: dragon-test-file
+                path: dragon.txt
+    test:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
+            - name: Download Dragon file
+              uses: actions/download-artifact@v4
+              with:
+                name: dragon-test-file
+            - name: Read file and display content
+              run: |
+                ls -ltra
+                if [ -f "dragon.txt" ]; then
+                  cat dragon.txt
+                else
+                  echo "dragon.txt does not exist."
+                fi
