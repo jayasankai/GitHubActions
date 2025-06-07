@@ -1,4 +1,5 @@
 name: 5. Upload and Download Build Artifact to use within jobs
+# This workflow demonstrates how to upload a build artifact in one job and download it in another job.
 on:
   push:
     branches:
@@ -16,21 +17,24 @@ jobs:
               run: |
                 chmod +x ./ascii-script.sh
                 ./ascii-script.sh
-            - name: Upload Dragon file as Artifact
+            - name: Upload Dragon file as Artifact # This step uploads the generated file as an artifact
               uses: actions/upload-artifact@v4
               with:
-                name: dragon-test-file
-                path: dragon.txt
+                name: dragon-test-file # Name of the artifact
+                path: dragon.txt # Path to the file to be uploaded as an artifact
     test:
         runs-on: ubuntu-latest
         needs: build
         steps:
             - name: Checkout Code
               uses: actions/checkout@v2
-            - name: Download Dragon file
+            - name: Download Dragon file # This step downloads the artifact created in the build job
               uses: actions/download-artifact@v4
               with:
-                name: dragon-test-file
+                name: dragon-test-file # Name of the artifact to download
+                # path: ./ # Optional: specify a path to download the artifact to
+                # if not specified, it will be downloaded to the current working directory
+                # path: ./new-directory/new-file.txt # Optional: specify a path to download the artifact to
             - name: Read file and display content
               run: |
                 ls -ltra

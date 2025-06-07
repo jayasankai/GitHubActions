@@ -1,4 +1,6 @@
 name: 3. Execute shell script in the workflow
+# This workflow demonstrates how to execute a shell script within the workflow.
+# It includes steps to install a 3rd party library (cowsay) and generate ASCII artwork.
 on:
   push:
     branches:

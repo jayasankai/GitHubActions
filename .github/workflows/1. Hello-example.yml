@@ -1,4 +1,5 @@
 name: 1. My First Workflow
+# This workflow is triggered by push or pull request events on the main branch.
 on:
   push:
     branches:

@@ -3,7 +3,7 @@ name: 7. Event Triggered Workflows
 on:
   workflow_dispatch: # Allows manual triggering of the workflow from the GitHub UI
   schedule:
-    - cron: '*/1 * * * *' # Runs every minute
+    - cron: '*/1 * * * *' # Runs every minute. NOTE: This is not working in GitHub Actions in my test flow.
 jobs:
   first_job:
     runs-on: ubuntu-latest

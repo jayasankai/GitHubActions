@@ -1,4 +1,15 @@
 name: 8. Handle Workflow Concurrency
+# This workflow demonstrates how to handle concurrency in GitHub Actions.
+# It includes multiple jobs that depend on each other, with a focus on concurrency control
+# to prevent overlapping runs of the same workflow.
+
+# For an example, the `deploy` job is set to cancel any in-progress runs of the same workflow
+# if a new run is triggered while the previous one is still running.
+# The `concurrency` feature is used to ensure that only one deployment job runs at a time.
+
+# However, if 'cancel-in-progress: false' is set, it will allow multiple runs of the same workflow 
+# to proceed concurrently, but latest jobs has to be wait for the previous runs to complete.
+
 on:
   workflow_dispatch: # Allows manual triggering of the workflow from the GitHub UI
 jobs:

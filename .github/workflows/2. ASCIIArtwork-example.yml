@@ -1,4 +1,5 @@
 name: 2. Execute 3rd party library
+# This workflow demonstrates how to use a 3rd party library (cowsay) to generate ASCII artwork.
 on:
   push:
     branches:

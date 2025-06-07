@@ -1,4 +1,8 @@
 name: 4. Run multiple Jobs in single workflow
+# This workflow demonstrates how to run multiple jobs in a single workflow.
+# Each job can run independently and can depend on the completion of other jobs. 
+# For example, the `test` job depends on both `build-core` and `build-module` jobs
+# however, the `build-core` and `build-module` jobs can run in parallel.
 on:
   push:
     branches:
