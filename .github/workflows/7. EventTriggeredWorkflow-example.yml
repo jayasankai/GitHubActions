@@ -1,6 +1,7 @@
 name: 7. Event Triggered Workflows
 # This workflow is triggered by push or pull request events on the main branch.
 on:
+  workflow_dispatch: # Allows manual triggering of the workflow from the GitHub UI
   schedule:
     - cron: '*/1 * * * *' # Runs every minute
 jobs:
