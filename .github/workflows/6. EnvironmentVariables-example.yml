@@ -1,0 +1,36 @@
+name: 6. Environemnt Variables Example
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+    WORKFLOW_VAR: "This is a global variable defined at the workflow level"
+jobs:
+  first_job:
+    env:
+        JOB1_VAR: "This is a job variable of first_job"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step level Environment Variables
+        env:
+            STEP1_VAR: "This is a step variable of first_job's first step"
+        run: |
+          echo "STEP1_VAR is " >> ${{env.STEP1_VAR}}
+          echo "JOB1_VAR is " >> ${{env.JOB1_VAR}}
+          echo "WORKFLOW_VAR is " >> ${{env.WORKFLOW_VAR}}
+  second_job:
+    env:
+        JOB2_VAR: "This is a job variable of second_job"
+    runs-on: ubuntu-latest
+    needs: first_job
+    steps:
+      - name: Step level Environment Variables
+        env:
+            STEP2_VAR: "This is a step variable of second_job's first step"
+        run: |
+          echo "STEP1_VAR is " >> ${{env.STEP2_VAR}}
+          echo "JOB1_VAR is " >> ${{env.JOB2_VAR}}
+          echo "WORKFLOW_VAR is " >> ${{env.WORKFLOW_VAR}}
