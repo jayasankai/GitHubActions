@@ -18,9 +18,9 @@ jobs:
         env:
             STEP1_VAR: "This is a step variable of first_job's first step"
         run: |
-          echo "STEP1_VAR is " >> ${{env.STEP1_VAR}}
-          echo "JOB1_VAR is " >> ${{env.JOB1_VAR}}
-          echo "WORKFLOW_VAR is " >> ${{env.WORKFLOW_VAR}}
+          echo "STEP1_VAR is " ${{env.STEP1_VAR}}
+          echo "JOB1_VAR is "  ${{env.JOB1_VAR}}
+          echo "WORKFLOW_VAR is " ${{env.WORKFLOW_VAR}}
   second_job:
     env:
         JOB2_VAR: "This is a job variable of second_job"
@@ -31,6 +31,6 @@ jobs:
         env:
             STEP2_VAR: "This is a step variable of second_job's first step"
         run: |
-          echo "STEP1_VAR is " >> ${{env.STEP2_VAR}}
-          echo "JOB1_VAR is " >> ${{env.JOB2_VAR}}
-          echo "WORKFLOW_VAR is " >> ${{env.WORKFLOW_VAR}}
+          echo "STEP1_VAR is " ${{env.STEP2_VAR}}
+          echo "JOB1_VAR is " ${{env.JOB2_VAR}}
+          echo "WORKFLOW_VAR is " ${{env.WORKFLOW_VAR}}
