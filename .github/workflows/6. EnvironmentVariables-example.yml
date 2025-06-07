@@ -1,4 +1,4 @@
-name: 6. Environemnt Variables Example
+name: 6. Environment Variables Example
 on:
   push:
     branches:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Step level Environment Variables
         env:
-            STEP1_VAR: "This is a step variable of first_job's first step"
+            STEP1_VAR: "This is a step variable of first_job\\'s first step"
         run: |
           echo STEP1_VAR is ${{env.STEP1_VAR}}
           echo JOB1_VAR is ${{env.JOB1_VAR}}
@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Step level Environment Variables
         env:
-            STEP2_VAR: "This is a step variable of second_job's first step"
+            STEP2_VAR: "This is a step variable of second_job\\'s first step"
         run: |
           echo STEP1_VAR is ${{env.STEP2_VAR}}
           echo JOB1_VAR is ${{env.JOB2_VAR}}
